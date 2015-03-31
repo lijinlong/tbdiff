@@ -76,11 +76,12 @@ function table_diff(tb1, tb2)
 		if val1~=nil and val2~=nil then
 			-- both have key k
 			if val1~=val2 then
-				diff.showDiff(k, val1, val2)
 				if type(val1)=="table" and type(val2)=="table" then
 					diff.pushPrefix(k)
 					table_diff(val1, val2)
 					diff.popPrefix()
+				else
+					diff.showDiff(k, val1, val2)
 				end
 			end
 		else
