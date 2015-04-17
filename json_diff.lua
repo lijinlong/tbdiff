@@ -55,6 +55,10 @@ for i = 1, 2 do
 			local content = f:read("*a")
 			f:close()
 			t[i] = json.decode(content)
+			if not t[i] then
+				print("Parse json file Error.", file)
+				os.exit(1)
+			end
 		else
 			print("Cann't read file " .. file)
 			os.exit(1)
